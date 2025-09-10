@@ -1,0 +1,502 @@
+/* --- Global Styles --- */
+:root {
+  --primary-color: #6b46ff; /* Binafsha rang */
+  --secondary-color: #00d4ff; /* Moviy rang */
+  --dark-bg: #0b0f12; /* Asosiy fon rangi */
+  --card-bg: #0f1720; /* Kartochkalar fon rangi */
+  --text-muted: #9aa4b2; /* Siyoh rangidagi matn */
+  --text-light: #e6eef6; /* Yoritilgan matn */
+  --glass-effect: rgba(255, 255, 255, 0.04); /* Shaffof effekt */
+  --border-light: rgba(255, 255, 255, 0.06); /* Yengil chegara rangi */
+  --container-width: 1100px; /* Kontentning maksimal kengligi */
+  --gap: 24px; /* Elementlar orasidagi bo'shliq */
+  --radius-lg: 16px; /* Katta yumaloqlik radiusi */
+  --radius-md: 12px; /* O'rtacha yumaloqlik radiusi */
+  --radius-sm: 8px; /* Kichik yumaloqlik radiusi */
+  --font-primary: 'Poppins', sans-serif; /* Asosiy shrift */
+  --font-secondary: 'Inter', sans-serif; /* Ikkinchi shrift */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Sahifada siljishda silliq animatsiya */
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Fon gradientlari va effektlari */
+  background:
+    radial-gradient(1200px 400px at 10% 10%, rgba(107, 70, 255, 0.08), transparent 6%),
+    radial-gradient(900px 300px at 90% 90%, rgba(0, 212, 255, 0.04), transparent 6%),
+    linear-gradient(180deg, var(--dark-bg), #07080a 60%);
+}
+
+.container {
+  width: 90%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+/* Asosiy tugmalar stillari */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: var(--dark-bg); /* Tugma ichidagi matn rangi */
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(107, 70, 255, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(107, 70, 255, 0.4);
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--glass-effect);
+  border-color: var(--glass-effect);
+  color: #fff;
+}
+
+/* --- Header --- */
+.site-header {
+  position: sticky; /* Header sahifani aylantirishda joyida qoladi */
+  top: 0;
+  backdrop-filter: blur(10px); /* Orqa fonni xiralashtirish */
+  background: linear-gradient(180deg, rgba(15, 23, 32, 0.8), rgba(15, 23, 32, 0.6));
+  border-bottom: 1px solid var(--border-light);
+  z-index: 100; /* Boshqa elementlardan yuqoriroq turishi */
+  padding: 15px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-family: var(--font-secondary);
+}
+
+.logo i {
+  color: var(--primary-color);
+  margin-right: 8px;
+}
+
+.logo span {
+  color: var(--primary-color);
+}
+
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 600;
+  font-family: var(--font-secondary);
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+.nav a i {
+  margin-right: 8px;
+  color: var(--secondary-color);
+}
+
+/* --- Hero Section --- */
+.hero {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Tasvirlarning o'lchovdan chiqib ketishini oldini oladi */
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 450px; /* Matn uchun 1 qism, rasm uchun 450px */
+  gap: 50px;
+  align-items: center; /* Elementlarni vertikal markazlash */
+  text-align: left; /* Matnni chapga tekislash */
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 60ch; /* Matn kengligini cheklash */
+  margin-bottom: 30px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+/* --- Quotes Section --- */
+.quotes {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-light);
+  padding: 30px 0;
+}
+
+.quotes .container {
+  padding: 30px 0;
+}
+
+.quote {
+  display: flex; /* Ikonka va matnni yonma-yon qo'yish */
+  align-items: center;
+  gap: 15px;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  opacity: 0; /* Dastlab ko'rinmas */
+  visibility: hidden; /* Dastlab ko'rinmas */
+  transition: opacity 0.5s ease, visibility 0.5s ease; /* Animatsiya */
+  position: absolute; /* Absolut joylashuv */
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.quote.active {
+  opacity: 1; /* Faol bo'lganda ko'rinadigan */
+  visibility: visible; /* Faol bo'lganda ko'rinadigan */
+}
+
+.quote i {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+}
+
+/* --- About Section --- */
+.about {
+  background: var(--dark-bg);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 400px 1fr; /* Rasm uchun 400px, matn uchun 1 qism */
+  gap: 40px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.about-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.about-text p {
+  margin-bottom: 15px;
+  color: var(--text-muted);
+}
+
+/* --- Cards Section --- */
+.cards {
+  background: var(--card-bg);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Kartalarni avtomatik joylashtirish */
+  gap: var(--gap);
+}
+
+.card {
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* Karta yuqoriga ko'tarilishi */
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8); /* Chuqurroq soyali effekt */
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px; /* Kartaning rasm qismining balandligi */
+  object-fit: cover; /* Rasmni buzmasdan to'ldirish */
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #fff;
+  display: flex; /* Ikonka va matnni bir qatorda */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card-content h3 i {
+  color: var(--secondary-color);
+}
+
+.card-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* --- Contact Section --- */
+.contact {
+  background: var(--dark-bg);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 ustunli layout */
+  gap: 40px;
+  align-items: flex-start; /* Yuqoridan tekislash */
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column; /* Elementlarni ustun shaklida */
+  gap: 20px;
+}
+
+.contact-info h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-info h3 i {
+  color: var(--primary-color);
+}
+
+.contact-info p {
+  color: var(--text-muted);
+  margin-left: 35px; /* Matnni ikonka bilan moslashtirish */
+}
+
+.contact-form {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-light);
+  background: var(--dark-bg);
+  color: var(--text-light);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical; /* Matn maydonini vertikal o'zgartirish */
+}
+
+/* --- Footer --- */
+.site-footer {
+  border-top: 1px solid var(--border-light);
+  background: var(--card-bg);
+  padding: 25px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.socials a {
+  margin-left: 18px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.socials a:hover {
+  color: #fff; /* Hover holatida rangni o'zgartirish */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .hero-inner {
+    grid-template-columns: 1fr; /* Bir ustunli layout */
+    text-align: center;
+  }
+  .hero-text {
+    order: 2; /* Matnni rasm ostiga qo'yish */
+  }
+  .hero-image {
+    order: 1; /* Rasmni birinchi ko'rsatish */
+    margin-bottom: 30px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr; /* Bir ustunli layout */
+  }
+  .contact-info {
+    margin-bottom: 30px; /* Pastki chekkaga bo'shliq */
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    flex-wrap: wrap; /* Header elementlarini qatlash */
+    justify-content: center;
+    gap: 15px;
+  }
+  .nav {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column; /* Nav elementlarini ustun shaklida */
+    gap: 10px;
+  }
+  .nav a {
+    margin-left: 0;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Kartalar kengligini moslash */
+  }
+  .footer-inner {
+    flex-direction: column; /* Footer elementlarini ustun shaklida */
+    gap: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    width: 95%;
+    padding: 40px 0;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+  .quote {
+    font-size: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .quote i {
+    margin-bottom: 10px;
+  }
+  .card-content h3 {
+    font-size: 1.1rem;
+  }
+  .card-content p {
+    font-size: 0.9rem;
+  }
+  .btn-primary, .btn-outline {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Fon gradientlari va effektlari */
+  background:
+    radial-gradient(1200px 400px at 10% 10%, rgba(107, 70, 255, 0.08), transparent 6%),
+    radial-gradient(900px 300px at 90% 90%, rgba(0, 212, 255, 0.04), transparent 6%),
+    linear-gradient(180deg, var(--dark-bg), #07080a 60%);
+  
+  /* Bu qator gorizontal aylanib o'tishni o'chiradi */
+  overflow-x: hidden; 
+}
