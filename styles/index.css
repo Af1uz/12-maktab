@@ -1,502 +1,681 @@
-/* --- Global Styles --- */
+/*
+ * --- Global Styles & Variables ---
+ * (These define the dark/modern theme)
+ */
 :root {
-  --primary-color: #6b46ff; /* Binafsha rang */
-  --secondary-color: #00d4ff; /* Moviy rang */
-  --dark-bg: #0b0f12; /* Asosiy fon rangi */
-  --card-bg: #0f1720; /* Kartochkalar fon rangi */
-  --text-muted: #9aa4b2; /* Siyoh rangidagi matn */
-  --text-light: #e6eef6; /* Yoritilgan matn */
-  --glass-effect: rgba(255, 255, 255, 0.04); /* Shaffof effekt */
-  --border-light: rgba(255, 255, 255, 0.06); /* Yengil chegara rangi */
-  --container-width: 1100px; /* Kontentning maksimal kengligi */
-  --gap: 24px; /* Elementlar orasidagi bo'shliq */
-  --radius-lg: 16px; /* Katta yumaloqlik radiusi */
-  --radius-md: 12px; /* O'rtacha yumaloqlik radiusi */
-  --radius-sm: 8px; /* Kichik yumaloqlik radiusi */
-  --font-primary: 'Poppins', sans-serif; /* Asosiy shrift */
-  --font-secondary: 'Inter', sans-serif; /* Ikkinchi shrift */
+    --primary-color: #6a11cb; /* Purple/Indigo */
+    --secondary-color: #2575fc; /* Blue */
+    --dark-bg: #0d1117; /* Main background */
+    --card-bg: #161b22; /* Card background */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-light: #e6edf3; /* Light text */
+    --text-muted: #8b949e; /* Muted text */
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --shadow-hover-color: rgba(106, 17, 203, 0.4);
+
+    --container-width: 1200px;
+    --gap: 24px;
+    --radius: 12px;
+
+    --font-primary: "Poppins", sans-serif;
+    --font-secondary: "Inter", sans-serif;
+
+    /* Qo'shimcha glow effekti */
+    --accent-glow: 0 0 15px var(--primary-color);
 }
 
+/* --- Base & Reset --- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth; /* Sahifada siljishda silliq animatsiya */
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-primary);
-  background-color: var(--dark-bg);
-  color: var(--text-light);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Fon gradientlari va effektlari */
-  background:
-    radial-gradient(1200px 400px at 10% 10%, rgba(107, 70, 255, 0.08), transparent 6%),
-    radial-gradient(900px 300px at 90% 90%, rgba(0, 212, 255, 0.04), transparent 6%),
-    linear-gradient(180deg, var(--dark-bg), #07080a 60%);
+    font-family: var(--font-primary);
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(
+        circle at 15% 15%,
+        rgba(106, 17, 203, 0.15),
+        transparent 30%
+    ),
+    radial-gradient(circle at 85% 85%, rgba(37, 117, 252, 0.1), transparent 30%);
+    overflow-x: hidden;
 }
 
 .container {
-  width: 90%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 60px 0;
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
+main {
+    padding-top: 80px; /* Header balandligi uchun */
+}
+
+/* --- Typography & Reusable Elements --- */
 .section-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 40px;
-  color: #fff;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--text-light);
 }
 
-/* Asosiy tugmalar stillari */
+.section-title::after {
+    /* Title osti chizig'i endi global o'zgaruvchi bilan ishlaydi */
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-family: var(--font-secondary);
+}
+
 .btn-primary {
-  display: inline-block;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  color: var(--dark-bg); /* Tugma ichidagi matn rangi */
-  padding: 14px 28px;
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 8px 25px rgba(107, 70, 255, 0.3);
-  transition: all 0.3s ease;
-  border: none;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    color: #fff;
+    box-shadow: 0 8px 20px var(--shadow-hover-color);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(107, 70, 255, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px var(--shadow-hover-color);
 }
 
 .btn-outline {
-  display: inline-block;
-  background: transparent;
-  border: 1px solid var(--border-light);
-  color: var(--text-muted);
-  padding: 12px 24px;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
+    background: transparent;
+    border-color: var(--border-color);
+    color: var(--text-light);
 }
 
 .btn-outline:hover {
-  background: var(--glass-effect);
-  border-color: var(--glass-effect);
-  color: #fff;
+    background-color: var(--border-color);
+    color: #fff;
 }
 
 /* --- Header --- */
 .site-header {
-  position: sticky; /* Header sahifani aylantirishda joyida qoladi */
-  top: 0;
-  backdrop-filter: blur(10px); /* Orqa fonni xiralashtirish */
-  background: linear-gradient(180deg, rgba(15, 23, 32, 0.8), rgba(15, 23, 32, 0.6));
-  border-bottom: 1px solid var(--border-light);
-  z-index: 100; /* Boshqa elementlardan yuqoriroq turishi */
-  padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(12px);
+    background: rgba(13, 17, 23, 0.7);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    padding: 15px 0;
 }
 
 .header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.6rem;
-  font-family: var(--font-secondary);
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-family: var(--font-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .logo i {
-  color: var(--primary-color);
-  margin-right: 8px;
+    color: var(--primary-color);
 }
 
-.logo span {
-  color: var(--primary-color);
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
-.nav a {
-  color: var(--text-muted);
-  text-decoration: none;
-  margin-left: 25px;
-  font-weight: 600;
-  font-family: var(--font-secondary);
-  transition: color 0.3s ease;
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-family: var(--font-secondary);
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.nav a:hover {
-  color: #fff;
+.nav-link:hover {
+    color: var(--text-light);
 }
 
-.nav a i {
-  margin-right: 8px;
-  color: var(--secondary-color);
+.nav-link i {
+    color: var(--secondary-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1100;
 }
 
 /* --- Hero Section --- */
 .hero {
-  padding-top: 80px;
-  padding-bottom: 80px;
-  text-align: center;
-  position: relative;
-  overflow: hidden; /* Tasvirlarning o'lchovdan chiqib ketishini oldini oladi */
+    text-align: center;
+    overflow: hidden;
+    padding: 80px 0;
 }
 
 .hero-inner {
-  display: grid;
-  grid-template-columns: 1fr 450px; /* Matn uchun 1 qism, rasm uchun 450px */
-  gap: 50px;
-  align-items: center; /* Elementlarni vertikal markazlash */
-  text-align: left; /* Matnni chapga tekislash */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    text-align: left;
 }
 
 .hero-text h1 {
-  font-size: 3.2rem;
-  margin-bottom: 15px;
-  line-height: 1.2;
-  color: #fff;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--text-light);
+    font-weight: 700;
 }
 
 .hero-text p {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  max-width: 60ch; /* Matn kengligini cheklash */
-  margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 55ch;
+    margin-bottom: 35px;
 }
 
 .hero-cta {
-  display: flex;
-  gap: 15px;
+    display: flex;
+    gap: 15px;
 }
 
 .hero-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 /* --- Quotes Section --- */
 .quotes {
-  background: var(--card-bg);
-  border-bottom: 1px solid var(--border-light);
-  padding: 30px 0;
-}
-
-.quotes .container {
-  padding: 30px 0;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 40px 0;
+    position: relative;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .quote {
-  display: flex; /* Ikonka va matnni yonma-yon qo'yish */
-  align-items: center;
-  gap: 15px;
-  font-size: 1.2rem;
-  color: var(--text-muted);
-  opacity: 0; /* Dastlab ko'rinmas */
-  visibility: hidden; /* Dastlab ko'rinmas */
-  transition: opacity 0.5s ease, visibility 0.5s ease; /* Animatsiya */
-  position: absolute; /* Absolut joylashuv */
-  width: 100%;
-  text-align: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding: 0 5%;
 }
 
 .quote.active {
-  opacity: 1; /* Faol bo'lganda ko'rinadigan */
-  visibility: visible; /* Faol bo'lganda ko'rinadigan */
+    opacity: 1;
+    visibility: visible;
 }
 
 .quote i {
-  color: var(--secondary-color);
-  font-size: 1.5rem;
+    color: var(--secondary-color);
+    font-size: 1.8rem;
 }
 
 /* --- About Section --- */
 .about {
-  background: var(--dark-bg);
+    padding: 80px 0;
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: 400px 1fr; /* Rasm uchun 400px, matn uchun 1 qism */
-  gap: 40px;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
 }
 
 .about-image img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 15px 35px var(--shadow-color);
 }
 
 .about-text h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-light);
 }
 
 .about-text p {
-  margin-bottom: 15px;
-  color: var(--text-muted);
+    margin-bottom: 15px;
+    color: var(--text-muted);
 }
 
 /* --- Cards Section --- */
 .cards {
-  background: var(--card-bg);
+    background: var(--dark-bg);
+    padding: 80px 0;
 }
 
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Kartalarni avtomatik joylashtirish */
-  gap: var(--gap);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--gap);
 }
 
 .card {
-  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px); /* Karta yuqoriga ko'tarilishi */
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8); /* Chuqurroq soyali effekt */
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px var(--shadow-color), var(--accent-glow);
+    border-color: var(--primary-color);
 }
 
 .card-image img {
-  width: 100%;
-  height: 200px; /* Kartaning rasm qismining balandligi */
-  object-fit: cover; /* Rasmni buzmasdan to'ldirish */
-  display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
 }
 
 .card-content {
-  padding: 20px;
-  text-align: center;
+    padding: 25px;
+    text-align: center;
 }
 
 .card-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-  color: #fff;
-  display: flex; /* Ikonka va matnni bir qatorda */
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .card-content h3 i {
-  color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 .card-content p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
+    color: var(--text-muted);
+    font-size: 1rem;
 }
+
+/*
+ * ===========================================
+ * MAK TAB RAHBARIYATI (LEADERS SECTION) - THEME ADJUSTED
+ * ===========================================
+ */
+.leaders-section {
+    padding: 80px 0;
+    /* Fon rangini global --dark-bg o'zgaruvchisiga mosladik */
+    background-color: var(--dark-bg);
+    border-top: 1px solid var(--border-color);
+    
+}
+
+.person-slider {
+    /* Grid yordamida joylashtirish: 3 ta ustun, ekran kichrayganda o'zgaradi */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--gap);
+    justify-content: center;
+}
+
+.person-card {
+    /* Kartochka fonini global --card-bg o'zgaruvchisiga mosladik */
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    /* Shadow rangini dark theme uchun mosladik */
+    box-shadow: 0 5px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    padding: 30px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    /* Kartochkaning chetida o'tkir rangli chiziq/glow */
+    border-bottom: 5px solid transparent;
+}
+
+.person-card:hover {
+    transform: translateY(-8px);
+    /* Hoverda kuchliroq shadow va glow effekti */
+    box-shadow: 0 15px 35px var(--shadow-color), var(--accent-glow);
+    /* Asosiy rangda chiziqni ko'rsatish */
+    border-bottom-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Rasm ramkasi stillari */
+.img-box {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 50%;
+    /* Asosiy rangdagi chiziq/ramka */
+    border: 5px solid var(--primary-color);
+    padding: 3px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.person-card:hover .img-box {
+    /* Hoverda ikkilamchi rangdan foydalanish */
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--secondary-color);
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+/* Matn stillari */
+.person-card h3 {
+    font-size: 1.4rem;
+    /* Yorqin matn rangini ishlatdik */
+    color: var(--text-light);
+    margin: 10px 0 5px;
+    font-weight: 600;
+}
+
+.person-card p {
+    /* Lavozim uchun yorqin aksent rang */
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    padding: 5px 10px;
+    display: inline-block;
+    /* Fon rangini card-bg asosida yarim shaffof qildik */
+    background-color: rgba(37, 117, 252, 0.1);
+    border-radius: 5px;
+}
+
 
 /* --- Contact Section --- */
 .contact {
-  background: var(--dark-bg);
+    padding: 80px 0;
+    /* Kontakt seksiyasini kartochka foni bilan mosladik */
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
 }
 
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 ustunli layout */
-  gap: 40px;
-  align-items: flex-start; /* Yuqoridan tekislash */
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column; /* Elementlarni ustun shaklida */
-  gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: flex-start;
 }
 
 .contact-info h3 {
-  font-size: 1.4rem;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    font-size: 1.6rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
 .contact-info h3 i {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .contact-info p {
-  color: var(--text-muted);
-  margin-left: 35px; /* Matnni ikonka bilan moslashtirish */
+    color: var(--text-muted);
+    margin-left: 40px;
+    margin-bottom: 25px;
 }
 
-.contact-form {
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
+.contact-form-wrapper {
+    background: var(--dark-bg);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
 }
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 15px;
-  border: 1px solid var(--border-light);
-  background: var(--dark-bg);
-  color: var(--text-light);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-primary);
-  font-size: 1rem;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-light);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.3);
 }
 
 .contact-form textarea {
-  min-height: 120px;
-  resize: vertical; /* Matn maydonini vertikal o'zgartirish */
+    resize: vertical;
+}
+
+.contact-form .btn {
+    width: 100%;
 }
 
 /* --- Footer --- */
 .site-footer {
-  border-top: 1px solid var(--border-light);
-  background: var(--card-bg);
-  padding: 25px 0;
+    border-top: 1px solid var(--border-color);
+    background: var(--dark-bg);
+    padding: 30px 0;
 }
 
 .footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--text-muted);
-  font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.socials {
+    display: flex;
+    gap: 20px;
 }
 
 .socials a {
-  margin-left: 18px;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 1.3rem;
-  transition: color 0.3s ease;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .socials a:hover {
-  color: #fff; /* Hover holatida rangni o'zgartirish */
+    color: var(--text-light);
+    transform: translateY(-3px);
 }
 
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
-  .hero-inner {
-    grid-template-columns: 1fr; /* Bir ustunli layout */
-    text-align: center;
-  }
-  .hero-text {
-    order: 2; /* Matnni rasm ostiga qo'yish */
-  }
-  .hero-image {
-    order: 1; /* Rasmni birinchi ko'rsatish */
-    margin-bottom: 30px;
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr; /* Bir ustunli layout */
-  }
-  .contact-info {
-    margin-bottom: 30px; /* Pastki chekkaga bo'shliq */
-  }
+    .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero-text {
+        order: 2;
+    }
+    .hero-image {
+        order: 1;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-cta {
+        justify-content: center;
+    }
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    .about-image {
+        max-width: 400px;
+        margin: 0 auto 30px;
+    }
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
-  .header-inner {
-    flex-wrap: wrap; /* Header elementlarini qatlash */
-    justify-content: center;
-    gap: 15px;
-  }
-  .nav {
-    width: 100%;
-    text-align: center;
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column; /* Nav elementlarini ustun shaklida */
-    gap: 10px;
-  }
-  .nav a {
-    margin-left: 0;
-  }
-  .section-title {
-    font-size: 1.8rem;
-  }
-  .hero-text h1 {
-    font-size: 2.5rem;
-  }
-  .card-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Kartalar kengligini moslash */
-  }
-  .footer-inner {
-    flex-direction: column; /* Footer elementlarini ustun shaklida */
-    gap: 10px;
-  }
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--dark-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .nav.active {
+        transform: translateX(0);
+    }
+    .nav-link {
+        font-size: 1.5rem;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Rahbariyat Section Responsivligi (768px) */
+    .leaders-section {
+        padding: 60px 0;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .person-slider {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
 }
 
 @media (max-width: 576px) {
-  .container {
-    width: 95%;
-    padding: 40px 0;
-  }
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-  .hero-text p {
-    font-size: 1rem;
-  }
-  .quote {
-    font-size: 1rem;
-    flex-direction: column;
-    text-align: center;
-  }
-  .quote i {
-    margin-bottom: 10px;
-  }
-  .card-content h3 {
-    font-size: 1.1rem;
-  }
-  .card-content p {
-    font-size: 0.9rem;
-  }
-  .btn-primary, .btn-outline {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-}
+    body {
+        font-size: 14px;
+    }
+    .quote {
+        flex-direction: column;
+        text-align: center;
+    }
+    .quote i {
+        margin-bottom: 10px;
+    }
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
 
-body {
-  font-family: var(--font-primary);
-  background-color: var(--dark-bg);
-  color: var(--text-light);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Fon gradientlari va effektlari */
-  background:
-    radial-gradient(1200px 400px at 10% 10%, rgba(107, 70, 255, 0.08), transparent 6%),
-    radial-gradient(900px 300px at 90% 90%, rgba(0, 212, 255, 0.04), transparent 6%),
-    linear-gradient(180deg, var(--dark-bg), #07080a 60%);
-  
-  /* Bu qator gorizontal aylanib o'tishni o'chiradi */
-  overflow-x: hidden; 
+    /* Rahbariyat Section Responsivligi (576px) */
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .person-slider {
+        grid-template-columns: 1fr;
+    }
+    .person-card {
+        padding: 25px 15px;
+    }
+    .img-box {
+        width: 140px;
+        height: 140px;
+    }
 }
